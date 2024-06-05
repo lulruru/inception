@@ -31,7 +31,6 @@ services:
     env_file: .env
     ports:
       - "443:443"
-      - "80:80"
     restart: unless-stopped
   wordpress:
     container_name: wordpress
@@ -56,13 +55,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/Users/russelenc/data/wordpress'
+      device: '/home/rencarna/data/wordpress'
   mariadb:
     driver: local
     driver_opts:
       type: 'none' 
       o: 'bind'
-      device: '/Users/russelenc/data/mariadb'
+      device: '/home/rencarna/data/mariadb'
 
 networks:
   inception:

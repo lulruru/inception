@@ -2,11 +2,12 @@
 FROM debian:bullseye
 
 # Update and install MariaDB and other dependencies
-RUN apt-get update -y && \
-    apt-get install -y mariadb-server mariadb-client procps
+RUN apt-get update -y && apt-get -y install apt-utils \
+    && apt-get install -y mariadb-server mariadb-client procps 
+	
 
  # Copy the provided config file to the container
- COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # Create necessary directories and set permissions
 RUN mkdir -p /var/run/mysqld && \
